@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+    
+    <bean id="user" class="com.bean.User" >
+    	<property name="name" value="张三"/>
+    	<property name="age" value="20"/>
+    </bean>
+    
+    <!-- 此bean类中有set方法，需要注入一个user对象
+   		 自动注入 byName:id或者name和属性同名的来注入，瑕疵：名字一定要一致
+   		 		byType:class一致的来注入，瑕疵不能有多个同类型
+   		 		constructor:走构造方法()默认byType
+     -->
+     <bean id="userDao" class="com.bean.UserDao" autowire="byName">
+     	<!-- 8大基本数据类型使用value直接赋值，引用类型使用ref 
+     	<property name="user" ref="user"></property> -->
+     </bean>
+</beans>
+
+
+
